@@ -19,9 +19,9 @@ int match(string str, string pat)
     int pHash = Hash(pat);
     string temp = str.substr(0, plen);
     int sHash = Hash(temp);
-    int pos = 0;
+    int pos = -1;
 
-    for(i = 1; i < slen - plen; i++)
+    for(i = 0; i < slen - plen - 1; i++)
     {
         char ch = str[i];
         sHash = Hash(str.substr(i, plen));
@@ -35,10 +35,8 @@ int match(string str, string pat)
             }
         }
     }
-    if(i >= slen)
-        return -1;
-    else
-        return pos;
+
+    return pos;
 }
 int main()
 {
