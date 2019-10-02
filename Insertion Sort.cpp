@@ -29,3 +29,8 @@ int main()
         cout << A[i] << " ";
     }
 }
+
+//////// Complexity ////////
+//     Average Case : O(n^2)               Average
+//     Best Case : O(n)                 When the array is already sorted
+//     Worst Case : O(n^2)              When the array is REVERSE sorted
