@@ -9,9 +9,7 @@ using namespace std;
 int Partition(int arr[], int lo, int hi);
 void Quicksort(int arr[], int lo, int hi);
 void Sort(int arr[], int n)
-{
-    Quicksort(arr, 0, n - 1);
-}
+{   Quicksort(arr, 0, n - 1);}
 int main()
 {
     int arr[] = {5,3,7,3,1,2};
