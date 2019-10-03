@@ -1,12 +1,44 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
+#define spc " "
+#define nl "\n"
+#define FOR(n) for(int i = 0; i < n; i++)
+
+int Partition(int arr[], int lo, int hi);
+void Quicksort(int arr[], int lo, int hi);
+void Sort(int arr[], int n)
+{
+    Quicksort(arr, 0, n - 1);
+}
+int main()
+{
+    int arr[] = {5,3,7,3,1,2};
+    Sort(arr, 6);
+    FOR(6)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+void Quicksort(int arr[], int lo, int hi)
+{
+    if(lo < hi)
+    {
+        int p = Partition(arr,lo,hi);
+
+        Quicksort(arr,lo,p-1);
+        Quicksort(arr,p+1,hi);
+    }
+}
 int Partition(int arr[], int lo, int hi)
 {
+    int i, j;
     int pivot = arr[hi];
-    int i = lo - 1;
+    i = lo - 1;
 
-    for(int j = lo; j < hi; j++)
+    for(j = lo; j < hi; j++)
     {
         if(arr[j] < pivot)
         {
@@ -14,28 +46,8 @@ int Partition(int arr[], int lo, int hi)
             swap(arr[i], arr[j]);
         }
     }
-    swap(arr[i+1], arr[hi]);
+    swap(arr[i + 1], arr[hi]);//put pivot in the right position
     return i + 1;
-}
-void QuickSort(int arr[], int lo, int hi)
-{
-    if(lo < hi)
-    {
-        int p = Partition(arr,lo,hi);
-        QuickSort(arr,lo,p-1);
-        QuickSort(arr,p+1,hi);
-    }
-}
-
-int main()
-{
-    int arr[] = {7,6,5,4,3,2,1};
-    QuickSort(arr,0,6);
-    for(int i = 0; i < 7; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    return 0;
 }
 //////// Complexity ////////////////////////////////////////////////////
 //     Average Case : O(n log (n))      Average
