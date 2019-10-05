@@ -31,8 +31,12 @@ void Merge(int arr[], int l, int m, int r)
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
-
+//    creating the
+//    left array
+//    and the
+//    right array
     int L[n1], R[n2];
+
 
     for(i = 0; i < n1; i++)
     {
@@ -44,7 +48,10 @@ void Merge(int arr[], int l, int m, int r)
     }
     i = j = 0;
     k = l;
-
+//    this while loop actually does the sorting, or more precisely
+//    puts the smaller elements on the left side
+//    and
+//    bigger elements on the right side
     while(i < n1 && j < n2)
     {
         if(L[i] <= R[j])
@@ -59,7 +66,11 @@ void Merge(int arr[], int l, int m, int r)
         }
         k++;
     }
-
+//    putting the rest of the elements that didn't
+//    get assigned to some space
+//    gets their place
+//    in
+//    the array
     while(i < n1)
     {
         arr[k] = L[i];
