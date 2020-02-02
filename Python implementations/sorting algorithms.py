@@ -6,8 +6,6 @@
 # Author - Ahammad Sabir Siddiquee
 # Date : 31-1-2020
 
-import math
-
 def bubbleSort(arr):
     n = len(arr)
     for i in range(n-1):
@@ -72,6 +70,8 @@ def merge(arr, lo, mid, hi):
             arr[k] = R[j]
             k += 1
             j += 1
+    
+    
     # dealing with the leftover
 #    if k == len(arr)-1:
 #        return
@@ -83,7 +83,7 @@ def merge(arr, lo, mid, hi):
         arr[k] = R[j]
         k += 1
         j += 1
-
+# i added a comment
 
 def mergeSort(arr, lo, hi):
     if lo < hi:
