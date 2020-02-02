@@ -83,7 +83,6 @@ def merge(arr, lo, mid, hi):
         arr[k] = R[j]
         k += 1
         j += 1
-# i added a comment
 
 def mergeSort(arr, lo, hi):
     if lo < hi:
