@@ -25,27 +25,6 @@ def insertionSort(arr):
             j -= 1
         arr[j+1] = key
 
-def mergeSort(arr, lo, hi):
-    if lo < hi:
-        mid = math.ceil((lo + hi) / 2)
-        mergeSort(arr, lo, mid)
-        mergeSort(arr, mid+1, hi)
-        merge(arr, lo, mid, hi)
-    return
-def merge(arr, lo, mid, hi):
-    L = arr[:mid]
-    L.append(9999999999999)
-    R = arr[mid:]
-    R.append(9999999999999)
-    i = j = 0
-    for k in range(lo, hi):
-        if L[i] <= R[j]:
-            arr[k] = L[i]
-            i += 1
-        elif arr[k] == R[j]:
-            j += 1
-    
-
 def countingSort(arr):
     n = len(arr)
     cnt = [0] * ( max(arr)+1)
@@ -70,10 +49,54 @@ def selectionSort(arr):
             if arr[j] < arr[small]:
                 small = j
         arr[small], arr[i] = arr[i], arr[small]
+##############################################
+
+def merge(arr, lo, mid, hi):
+    L = arr[:mid]
+    R = arr[mid:]
+    
+    n1 = len(L)
+    n2 = len(R)
+    
+    i = j = 0
+    k = lo
+    
+    # putting the small to the left and big to the right
+    while i < n1 and j < n2:
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            k += 1
+            i += 1
+        else:
+            arr[k] = R[j]
+            k += 1
+            j += 1
+    # dealing with the leftover
+    while i < n1:
+        arr[k] = L[i]
+        k += 1
+        i += 1
+    while j < n2:
+        arr[k] = R[j]
+        k += 1
+        j += 1
+
+
+def mergeSort(arr, lo, hi):
+    if lo < hi:
+        mid = int((lo + hi)/2)
+        mergeSort(arr, lo, mid)
+        mergeSort(arr, mid+1, hi)
+        merge(arr, lo, mid, hi)
+
+def mergeSort(arr, n):
+    mergeSort(arr, 0, n-1)
+
+##############################################
 
 if __name__ == "__main__":
     li = [5,4,10,3,2,1]
     
-    mergeSort(li, 1, 6)
+    mergeSort(li, 6)
     
     print(li)
