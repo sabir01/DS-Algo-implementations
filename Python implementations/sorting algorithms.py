@@ -58,7 +58,8 @@ def merge(arr, lo, mid, hi):
     n1 = len(L)
     n2 = len(R)
     
-    i = j = 0
+    i = 0
+    j = 0
     k = lo
     
     # putting the small to the left and big to the right
@@ -72,6 +73,8 @@ def merge(arr, lo, mid, hi):
             k += 1
             j += 1
     # dealing with the leftover
+#    if k == len(arr)-1:
+#        return
     while i < n1:
         arr[k] = L[i]
         k += 1
@@ -89,7 +92,7 @@ def mergeSort(arr, lo, hi):
         mergeSort(arr, mid+1, hi)
         merge(arr, lo, mid, hi)
 
-def mergeSort(arr, n):
+def mergesort(arr, n):
     mergeSort(arr, 0, n-1)
 
 ##############################################
@@ -97,6 +100,6 @@ def mergeSort(arr, n):
 if __name__ == "__main__":
     li = [5,4,10,3,2,1]
     
-    mergeSort(li, 6)
+    mergesort(li, 6)
     
     print(li)
