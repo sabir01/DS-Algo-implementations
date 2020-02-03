@@ -75,8 +75,6 @@ def merge(arr, lo, mid, hi):
             j += 1
     
     # dealing with the leftover
-#    if k == len(arr)-1:
-#        return
     while i < n1:
         arr[k] = L[i]
         k += 1
