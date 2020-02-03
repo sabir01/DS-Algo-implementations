@@ -47,7 +47,6 @@ def selectionSort(arr):
             if arr[j] < arr[small]:
                 small = j
         arr[small], arr[i] = arr[i], arr[small]
-##############################################
 
 def merge(arr, lo, mid, hi):
     n1 = mid - lo + 1
@@ -98,7 +97,7 @@ def mergeSort(arr, lo, hi):
 def mergesort(arr, n):
     mergeSort(arr, 0, n-1)
 
-##############################################
+
 
 if __name__ == "__main__":
     li = [5,4,10,3,2,1]
