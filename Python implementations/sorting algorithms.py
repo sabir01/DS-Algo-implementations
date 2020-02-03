@@ -50,11 +50,15 @@ def selectionSort(arr):
 ##############################################
 
 def merge(arr, lo, mid, hi):
-    L = arr[:mid]
-    R = arr[mid:]
+    n1 = mid - lo + 1
+    n2 = hi - mid
     
-    n1 = len(L)
-    n2 = len(R)
+    L = [None] * n1
+    R = [None] * n2
+    for i in range(n1):
+        L[i] = arr[lo + i]
+    for i in range(n2):
+        R[i] = arr[mid + i + 1]
     
     i = 0
     j = 0
@@ -70,7 +74,6 @@ def merge(arr, lo, mid, hi):
             arr[k] = R[j]
             k += 1
             j += 1
-    
     
     # dealing with the leftover
 #    if k == len(arr)-1:
@@ -89,6 +92,7 @@ def mergeSort(arr, lo, hi):
         mid = int((lo + hi)/2)
         mergeSort(arr, lo, mid)
         mergeSort(arr, mid+1, hi)
+        
         merge(arr, lo, mid, hi)
 
 def mergesort(arr, n):
@@ -99,6 +103,6 @@ def mergesort(arr, n):
 if __name__ == "__main__":
     li = [5,4,10,3,2,1]
     
-    mergesort(li, 6)
+    mergesort(li, len(li))
     
     print(li)
