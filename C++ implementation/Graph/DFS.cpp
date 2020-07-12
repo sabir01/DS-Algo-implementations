@@ -9,7 +9,7 @@ class Graph
 public:
     Graph(int V);
     void addEdge(int v, int w);
-    void DFS();
+    void DFS(int v);
 };
 
 Graph::Graph(int v)
@@ -26,6 +26,7 @@ void Graph::addEdge(int v, int w)
 void Graph::DFSUtil(int v, bool visited[])
 {
     visited[v] = true;
+    cout << v << " ";
 
     list<int>::iterator it;
 
@@ -36,14 +37,13 @@ void Graph::DFSUtil(int v, bool visited[])
     }
 }
 
-void Graph::DFS()
+void Graph::DFS(int v)
 {
     bool *visited = new bool[V];
     for(int i = 0; i < V; i++)
         visited[i] = false;
     
-    for(int i = 0; i < V; i++)
-        DFSUtil(i, visited);
+    DFSUtil(v, visited);
 }
 
 int main() 
@@ -55,10 +55,9 @@ int main()
     g.addEdge(1, 2); 
     g.addEdge(2, 0); 
     g.addEdge(2, 3); 
-    g.addEdge(3, 3); 
-  
+    g.addEdge(3, 3);
     cout << "Following is Depth First Traversaln"; 
-    g.DFS(); 
+    g.DFS(1); 
   
     return 0; 
 } 
