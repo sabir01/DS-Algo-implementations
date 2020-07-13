@@ -12,16 +12,23 @@ void Print(BigInt a)
 {
     Set(a);
     printf("%d", (a.size() == 0) ? 0 : a.back());
-    for(int i = a.size() - 2; i >= 0; i--)  printf("%d", a[i]); /// Check & varify ----------------> %d or %09d
+    for (int i = a.size() - 2; i >= 0; i--)
+        printf("%d", a[i]); /// Check & varify ----------------> %d or %09d
     cout << "\n";
 }
 BigInt Integer(string s)
 {
     BigInt ans;
-    if(s[0] == '-') return ans;
-    if(s.size() == 0){  ans.pb(0); return ans;}
-    while (s.size()%9 != 0) s = '0'+s;
-    for(int i = 0; i < s.size(); i+=9)
+    if (s[0] == '-')
+        return ans;
+    if (s.size() == 0)
+    {
+        ans.pb(0);
+        return ans;
+    }
+    while (s.size() % 9 != 0)
+        s = '0' + s;
+    for (int i = 0; i < s.size(); i += 9)
     {
         string temp;
         temp = s.substr(i, 9);
@@ -30,10 +37,23 @@ BigInt Integer(string s)
     Set(ans);
     return ans;
 }
+// BigInt Integer(char c[])
+// {
+//     Integer(string(c));
+// }
+BigInt Integer(long long n)
+{
+    return Integer(to_string(n));
+}
+// BigInt Integer(int n)
+// {
+//     return Integer(to_string(n));
+// }
+
 int main()
 {
     BigInt a;
-    a = Integer("12308250981429920384091238948210984091238409812309481209384");
+    char c[] = "1234";
+    a = Integer(c);
     Print(a);
-
 }
