@@ -4,7 +4,7 @@ using namespace std;
 #define pb push_back
 #define FOR(n)    for(int i = 0; i < n; i++)
 #define REV(n)    for(int i = n; i >= 0; i--)
-int base = 10;
+const int base = 10;
 
 void Set(BigInt &a)
 {
@@ -87,13 +87,27 @@ bool operator >= (BigInt a, BigInt b)
 {
     return (a > b || a == b);
 }
+BigInt max(BigInt a, BigInt b)
+{
+    if(a < b)
+        return b;
+    return a;
+}
+BigInt min(BigInt a, BigInt b)
+{
+    if(a > b)
+        return b;
+    return a;
+}
 
 BigInt operator + (BigInt a, BigInt b)
 {
     Set(a);
     Set(b);
     BigInt ans;
-    int carry;
+    int carry = 0;
+    Print(a);
+
     FOR(max(a.size(), b.size()) - 1)
     {
         if(i < a.size())    carry += a[i];
@@ -102,6 +116,7 @@ BigInt operator + (BigInt a, BigInt b)
         carry /= base;
     }
     if(carry)   ans.pb(carry);
+    Set(ans);
     return ans;
 }
 BigInt operator + (BigInt a, int b)
@@ -127,13 +142,25 @@ BigInt operator - (BigInt a, BigInt b)
     Set(a);
     Set(b);
     BigInt ans;
-    int carry;
-    
+    int carry = 0;
+    FOR(a.size()-1)
+    {
+        carry += a[i] - (i < b.size() ? b[i] : 0);
+        if(carry < 0)   ans.pb(carry+base), carry = -1;
+        else    ans.pb(carry), carry = 0;
+    }
+    Set(ans);
+    return ans;
 }
+BigInt operator - (BigInt a, int b)
+{
+    return (a - Integer(b));
+}
+
 int main()
 {
-    BigInt a;
-    char c[] = "1234";
-    a = Integer(c);
-    Print(a);
+    BigInt a, b;
+    a = Integer(100);
+    b = Integer(50);
+    Print(a+a);
 }
